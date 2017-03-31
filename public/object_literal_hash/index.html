@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Object Literal Example</title>
+  </head>
+  <body>
+     <!-- ONE LISTENER on PARENT LEVEL -->
+     <ul id="papa">
+        <li>
+            <!-- LOOK HOW data-action matches js method name from literal -->
+            <button data-action="editNews" data-id="news_id_1">Edit News 1</button>
+
+            <!-- removeNews js method -->
+            <button data-action="removeNews" data-id="news_id_1">Remove News 1</button>
+        </li>
+        <li>
+            <button data-action="editNews" data-id="news_id_2">Edit News 2</button>
+            <button data-action="removeNews" data-id="news_id_2">Remove News 2</button>
+        </li>
+      </ul>
+      <script src="./utils.js"></script>
+      <script src="./index.js"></script>
+  </body>
+</html>
