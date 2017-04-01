@@ -22,20 +22,20 @@ const articleService = (function() {
     };
 
     const feedActionHash = {
-        true: function (id, tags) {
+        [true]: function (id, tags) {
             tags.map(tagKey => createTagBucket(tagKey))
                 .forEach(tag => tag.push(id));
         },
-        false: function (id, tags) {
+        [false]: function (id, tags) {
             tags.map(tagKey => tagsIndex[tagKey])
                 .forEach(ids => removeArticleId(id, ids));
         }
     }
 
-    function feedTagsIndex (article, isAddMode) {
+    function feedTagsIndex(article, isAddMode) {
         const id = article.id;
         const tags = article.tags;
-        if (!tags || !tags.length) {
+        if (!tags || tags.length === 0) {
             return;
         }
         
@@ -43,7 +43,7 @@ const articleService = (function() {
         actionFunction(id, tags);
     }
 
-    function createTagBucket (tagKey) {
+    function createTagBucket(tagKey) {
         let tagBucket = tagsIndex[tagKey];
         if (!tagBucket) {
             tagsIndex[tagKey] = [];
@@ -52,7 +52,7 @@ const articleService = (function() {
         return tagBucket;   
     }
 
-    function removeArticleId (id, articleIds) {
+    function removeArticleId(id, articleIds) {
         const index = articleIds.indexOf(id);
         articleIds.splice(index, 1);
     }
@@ -101,13 +101,13 @@ const articleService = (function() {
     }
 
     return {
-        createArticle: createArticle,
-        readArticle: readArticle,
-        updateArticle: updateArticle,
-        deleteArticle: deleteArticle,
+        createArticle,
+        readArticle,
+        updateArticle,
+        deleteArticle,
 
-        findArticles: findArticles,
-        findTags: findTags,
+        findArticles,
+        findTags,
     }
 })();
 
