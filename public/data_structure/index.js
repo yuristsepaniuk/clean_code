@@ -28,7 +28,7 @@ const articleService = (function() {
         },
         false: function (id, tags) {
             tags.map(tagKey => tagsIndex[tagKey])
-                .forEach(articleIds => removeArticleId(id, articleIds));
+                .forEach(ids => removeArticleId(id, ids));
         }
     }
 
